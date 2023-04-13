@@ -80,11 +80,10 @@
 
 .delete{
     font-size: 25px;
-
     background-color: rgb(224, 221, 221);
 }
 .delete:hover{
- background-color: rgb(255, 255, 255);
+ background-color: rgba(255, 255, 255, 0.76);
 }
 .divide{
     font-size: 25px;
