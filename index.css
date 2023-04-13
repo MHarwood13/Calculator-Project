@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+@media (max-width: 500px) {
+    .calculator-container{
+        max-width: max-content;
+    }
+}
+.calculator-container{
+    margin:auto;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    "display"
+    "row-1"
+    "row-2"
+    "row-3"
+    "row-4"
+    "row-5"    ;
+    max-width:fit-content;
+    justify-content: center;
+
+
+}
+.result{
+    height:50px;
+    ;
+
+}
+.display{
+    display:grid;
+    background-color: rgb(0, 0, 0);
+    font-size: 25px;
+    color:rgb(255, 255, 255);
+    text-align: right;
+    height:50px;
+    max-width: fit-content;
+    grid-area: "display"
+}
+.row-1{
+    display:grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-area:"row-1";
+    height:75px;
+}
+.row-2{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-area:"row-2";
+    height:75px
+}
+.row-3{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-area:"row-3";
+    height:75px
+}
+.row-4{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-area:"row-4";
+    height:75px
+}
+.row-5{
+    display:grid;
+    grid-template-columns: 3fr 1fr ;
+    grid-area:"row-5";
+    height:75px
+}
+.clear{
+    font-size: 25px;
+    border-left:.5px;
+    background-color: rgb(224, 221, 221);
+}
+.clear:hover{
+ background-color: rgb(255, 255, 255);
+}
+
+.delete{
+    font-size: 25px;
+
+    background-color: rgb(224, 221, 221);
+}
+.delete:hover{
+ background-color: rgb(255, 255, 255);
+}
+.divide{
+    font-size: 25px;
+    border-right:0px;
+
+    background-color: rgb(230, 153, 98);
+    color: white;
+}
+.divide:hover{
+ background-color: rgb(246, 193, 149);
+}
+.seven{
+    font-size: 25px;
+    border-left:0px;
+    background-color: rgb(224, 221, 221);
+}
+.seven:hover{
+ background-color: rgb(255, 255, 255);
+}
+.eight{
+    font-size: 25px;
+    background-color: rgb(224, 221, 221);
+}
+.eight:hover{
+ background-color: rgb(255, 255, 255);
+}
+.nine{
+    font-size: 25px;
+
+    background-color: rgb(224, 221, 221);
+}
+.nine:hover{
+ background-color: rgb(255, 255, 255);
+}
+.multiply{
+    font-size: 25px;
+    border-right:.0px;
+    background-color: rgb(230, 153, 98);
+    color: white;
+}
+.multiply:hover{
+ background-color: rgb(246, 193, 149);
+}
+.four{
+    font-size: 25px;
+    border-left:0px;
+    background-color: rgb(224, 221, 221);
+}
+.four:hover{
+ background-color: rgb(255, 255, 255);
+}
+.five{
+    font-size: 25px;
+
+    background-color: rgb(224, 221, 221);
+}
+.five:hover{
+ background-color: rgb(255, 255, 255);
+}
+.six{
+    font-size: 25px;
+    background-color: rgb(224, 221, 221);
+}
+.six:hover{
+ background-color: rgb(255, 255, 255);
+}
+.subtract{
+    font-size: 25px;
+    border-right:0px;
+    background-color: rgb(230, 153, 98);
+    color: white;
+}
+.subtract:hover{
+ background-color: rgb(246, 193, 149);
+}
+.one{
+    font-size: 25px;
+    border-left:0px;
+
+    background-color: rgb(224, 221, 221);
+}
+.one:hover{
+ background-color: rgb(255, 255, 255);
+}
+.two{
+    font-size: 25px;
+    background-color: rgb(224, 221, 221);
+}
+.two:hover{
+ background-color: rgb(255, 255, 255);
+}
+.three{
+    font-size: 25px;
+
+    background-color: rgb(224, 221, 221);
+}
+.three:hover{
+ background-color: rgb(255, 255, 255);
+}
+.add{
+    font-size: 25px;
+    border-right:0px;
+    background-color: rgb(230, 153, 98);
+    color: white;
+}
+.add:hover{
+ background-color: rgb(246, 193, 149);
+}
+.zero{
+    font-size: 25px;
+    border-left:0px;
+    border-bottom:0px;
+    background-color: rgb(224, 221, 221);
+}
+.zero:hover{
+ background-color: rgb(255, 255, 255);
+}
+.enter{
+    font-size: 25px;
+    border-right:0px;
+    border-bottom:0px;
+    background-color: rgb(230, 153, 98);
+    color: white;
+}
+.enter:hover{
+ background-color: rgb(246, 193, 149);
+}
+input{
+    border:solid 1px black;
+}
+.button:active{
+    background-color: grey ;
+}
+
+.button2:active{
+    background-color: rgb(240, 129, 59) ;
+}
