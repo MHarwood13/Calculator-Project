@@ -129,5 +129,8 @@ buttons.forEach(button => {
           inputDigit(value);
         }
     }
+
+    // Update the display on every button click
+    updateDisplay();
   });
 });
