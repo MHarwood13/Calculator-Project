@@ -1,90 +1,95 @@
 
-const display = document.querySelector('.display');
-const buttons = document.querySelectorAll('.button');
+let total = 0;
+let buffer = "0";
+let previousOperator;
 
-let operand1 = '';
-let operand2 = '';
-let operator = '';
+const display = document.querySelector(".display");
 
-buttons.forEach(button => {
-  button.addEventListener('click', handleClick);
-});
-
-function handleClick(e) {
-  const value = e.target.value;
-
-  if (value === 'C') {
-    clear();
-  } else if (value === '←') {
-    deleteLast();
-  } else if (isNumber(value) || value === '.') {
-    handleNumber(value);
-  } else if (isOperator(value)) {
-    handleOperator(value);
-  } else if (value === '=') {
-    handleEquals();
-  }
-
-  display.value = operand1;
-}
-
-function clear() {
-  operand1 = '';
-  operand2 = '';
-  operator = '';
-}
-
-function deleteLast() {
-  if (operator) {
-    operand2 = operand2.slice(0, -1);
-    display.value = operand2;
-  } else {
-    operand1 = operand1.slice(0, -1);
-    display.value = operand1;
-  }
-}
-
-function isNumber(value) {
-  return !isNaN(value);
-}
-
-function isOperator(value) {
-  return value === '+' || value === '-' || value === 'x' || value === '÷';
+function buttonClick (value) {
+    if (isNaN(parseInt(value))) {
+        handleSymbol(value)
+    } else {
+        handleNumber(value)
+    }
+     rerender();
 }
 
 function handleNumber(value) {
-  if (operator) {
-    operand2 += value;
-    display.value = operand2;
-  } else {
-    operand1 += value;
-    display.value = operand1;
-  }
+    if (buffer ==="0") {
+        buffer = value;
+    }else {
+        buffer += value;
+    }
 }
 
-function handleOperator(value) {
-  operator = value;
+function handleMath(value) {
+    if (buffer === "0") return;
+
+    const intBuffer = parseInt(buffer);
+
+    if (total === 0) total = intBuffer;
+    else clearOperation(intBuffer);
+
+    previousOperator = value;
+    buffer = "0";
 }
 
-function handleEquals() {
-  const num1 = parseFloat(operand1);
-  const num2 = parseFloat(operand2);
+function handleSymbol(value) {
+    switch(value) {
+        case "C":
+            buffer = "0";
+            total = 0;
+            break;
+        case "=":
+            if (previousOperator === null) return;
+            clearOperation(parseInt(buffer))
+            previousOperator = null;
+            buffer = total;
+            total = 0;
+            break;
+       case"←":
+            if (buffer.length === 1) buffer = "0";
+            else {
+                buffer = buffer.substring(0, buffer.length - 1);
+            }
+            break;
 
-  switch (operator) {
-    case '+':
-      operand1 = num1 + num2;
-      break;
-    case '-':
-      operand1 = num1 - num2;
-      break;
-    case 'x':
-      operand1 = num1 * num2;
-      break;
-    case '÷':
-      operand1 = num1 / num2;
-      break;
-  }
+        case"+":
+        case"-":
+        case"÷":
+        case"x":
+        handleMath(value);
+        break;
 
-  operand2 = '';
-  operator = '';
+    }
+
 }
+
+function clearOperation(intBuffer) {
+    if (previousOperator === "+") {
+        total += intBuffer;
+    }
+        else if (previousOperator === "-") {
+            total -= intBuffer;
+        }
+
+        else if (previousOperator === "x") {
+            total *= intBuffer;
+        }
+
+        else if (previousOperator === "÷") {
+            total /= intBuffer;
+        }
+}
+
+function rerender() {
+    display.value = buffer;
+}
+
+function init() {
+    document.querySelector(".calculator-container").addEventListener("click", function(event){
+        buttonClick(event.target.value);
+    })
+}
+
+init();
